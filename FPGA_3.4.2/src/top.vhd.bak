@@ -1,0 +1,381 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity top is
+	generic (
+		BOARD_ID			 : integer := 0;
+		COUNTER_BITS	 : integer := 10;
+		NUM_TRANSDUCERS : integer := 256
+	);
+	port (
+		CLK			: in  STD_LOGIC;
+
+		MS_SELECT	: in  STD_LOGIC;
+		SYNC_MAIN	: inout STD_LOGIC;
+		SYNC_SWAP_M : inout STD_logic;
+		SYNC_SWAP_S : inout STD_logic;
+
+		RXF_N			: in  STD_LOGIC;
+		USB_DATA		: inout STD_LOGIC_VECTOR (7 downto 0);
+		RD_N			: out STD_LOGIC;
+
+		DATA			: out STD_LOGIC_VECTOR (31 downto 0);
+		ILLUMI		: out STD_LOGIC_VECTOR (2 downto 0);
+
+		RCLK			: out STD_LOGIC_VECTOR (3 downto 0);
+		SCLK			: out STD_LOGIC_VECTOR (3 downto 0);
+
+		VS_TOG		: out STD_LOGIC;
+		LED			: out STD_LOGIC_VECTOR (3 downto 0)
+	);
+end top;
+
+architecture Behavioral of top is
+
+	component Masterclock is
+		port (
+			inclk0 : in  std_logic;
+			c0 	 : out std_logic;
+			c1		 : out std_logic );
+	end component;
+
+	component Counter is
+		generic (
+			COUNTER_BITS: integer := 10 );
+		port (
+			clk_8 	  : in  std_logic;
+			sync_reset : in  std_logic;
+			count		  : out std_logic_vector (COUNTER_BITS-1 downto 0) );
+	end component;
+
+	component ParallelReceiver is
+		Port (
+			clk		: in  std_logic;
+			rxf_n		: in  std_logic;
+			txe_n		: in  std_logic;
+			rd_n		: out std_logic;
+			wr_n		: out std_logic;
+			usb_data : inout std_logic_vector(7 downto 0);
+			bus_busy : out std_logic;
+			tg_ready : in  std_logic;
+			tg_wr    : in  std_logic;
+			tg_di    : in  std_logic_vector(7 downto 0);
+			tg_rd    : out std_logic;
+			tg_do    : out std_logic_vector(7 downto 0) );
+	end component;
+
+	component Distribute is
+		generic (
+			NUM_TRANSDUCERS : integer := 256
+		);
+		port (
+			clk		 : in  std_logic;
+			byte_in	 : in  std_logic;
+			q_in		 : in  std_logic_vector (7 downto 0);
+			ack		 : in  std_logic;
+			synccnt	 : in	std_logic_vector (7 downto 0);
+			ready	    : out std_logic;
+			t_en	    : out std_logic;
+			t_flag	 : out std_logic;
+			t_data	 : out std_logic_vector (6 downto 0);
+			t_address : out std_logic_vector (7 downto 0);
+			t_pswap	 : out std_logic;
+			t_aswap	 : out std_logic;
+			rgb_data	 : out std_logic_vector (26 downto 0);
+			rgb_en	 : out std_logic;
+			start		 : out std_logic;
+			xout	    : out std_logic_vector (12 downto 0); 
+			yout	    : out std_logic_vector (12 downto 0);
+			zout	    : out std_logic_vector (12 downto 0);
+			ampout	 : out std_logic_vector (7 downto 0);
+			phaout	 : out std_logic_vector (6 downto 0);
+			rgbout	 : out std_logic_vector (23 downto 0);
+			cen	    : out std_logic;
+			calib		 : out std_logic_vector (6 downto 0);
+			caddress  : out std_logic_vector (7 downto 0);
+			debugled	 : out std_logic_vector (3 downto 0) );
+	end component;
+	
+	component PointHoloController is
+		port (
+			clk	     : in  std_logic;
+			start	     : in  std_logic;
+			xin	     : in  std_logic_vector (12 downto 0);
+			yin		  : in  std_logic_vector (12 downto 0);
+			zin		  : in  std_logic_vector (12 downto 0);
+			ampin		  : in  std_logic_vector (7 downto 0);
+			phain		  : in  std_logic_vector (6 downto 0);
+			rgbin		  : in  std_logic_vector (23 downto 0);
+			cen		  : in  std_logic;
+			calib	 	  : in  std_logic_vector (6 downto 0);
+			caddress   : in  std_logic_vector (7 downto 0);
+			ack		  : out std_logic;
+			holo_en    : out std_logic;
+			holo_phase : out std_logic_vector (6 downto 0);
+			holo_amp	  : out std_logic_vector (6 downto 0);
+			holo_color : out std_logic_vector (26 downto 0);
+			holo_addr  : out std_logic_vector (7 downto 0) );
+	end component;
+
+	component CalibrationAndMapping is
+		generic (
+			BOARD_ID	: integer := 0
+		);
+		port (
+			clk	     : in  std_logic;
+			t_en	     : in  std_logic;
+			t_flag	  : in  std_logic;
+			t_data	  : in  std_logic_vector (6 downto 0);
+			t_address  : in  std_logic_vector (7 downto 0);
+			t_pswap	  : in  std_logic;
+			t_aswap	  : in  std_logic;
+			rgb_data	  : in  std_logic_vector (26 downto 0);
+			rgb_en	  : in  std_logic;
+			holo_en    : in  std_logic;
+			holo_phase : in  std_logic_vector (6 downto 0);
+			holo_amp	  : in  std_logic_vector (6 downto 0);
+			holo_color : in  std_logic_vector (26 downto 0);
+			holo_addr  : in  std_logic_vector (7 downto 0);
+			phase		  : out std_logic_vector (6 downto 0);
+			amplitude  : out std_logic_vector (6 downto 0);
+			color		  : out std_logic_vector (26 downto 0);
+			address 	  : out std_logic_vector (7 downto 0);
+			p_enable   : out std_logic;
+			a_enable   : out std_logic;
+			c_enable	  : out std_logic;
+			p_swap 	  : out std_logic;
+			a_swap 	  : out std_logic;
+			c_swap 	  : out std_logic );
+	end component;
+	
+	component AllChannels is
+		generic (
+			NUM_TRANSDUCERS: integer := 256 );
+		port (
+			clk		 : in  std_logic;
+			clk_8		 : in  std_logic;
+			count		 : in  std_logic_vector (9 downto 0);
+			phase		 : in  std_logic_vector (6 downto 0);
+			amplitude : in  std_logic_vector (6 downto 0);
+			color		 : in  std_logic_vector (26 downto 0);
+			address	 : in  std_logic_vector (7 downto 0);
+			p_enable  : in  std_logic;
+			a_enable  : in  std_logic;
+			c_enable	 : in  std_logic;
+			p_swap 	 : in  std_logic;
+			a_swap	 : in  std_logic;
+			c_swap	 : in  std_logic;
+			data		 : out std_logic_vector (31 downto 0);
+			illumi	 : out std_logic_vector (2 downto 0);
+			rclk		 : out std_logic;
+			synccnt	 : out std_logic_vector (7 downto 0)	);
+	end component;
+
+   signal clk_8		 : std_logic := '0';
+   signal nclk_8		 : std_logic := '0';
+   signal count 		 : std_logic_vector(9 downto 0) := (others => '0');
+	signal rx_data 	 : std_logic_vector(7 downto 0) := (others => '0');
+	signal new_rx_data : std_logic := '0';
+	signal sync_reset	 : std_logic := '0';
+	
+	signal ready		 : std_logic := '0';
+	signal t_en			 : std_logic := '0';
+	signal t_flag		 : std_logic := '0';
+	signal t_data		 : std_logic_vector (6 downto 0) := (others => '0');
+	signal t_address	 : std_logic_vector (7 downto 0) := (others => '0');
+	signal t_pswap		 : std_logic := '0';
+	signal t_aswap		 : std_logic := '0';
+	signal rgb_data	 : std_logic_vector (26 downto 0) := (others => '0');
+	signal rgb_en		 : std_logic := '0';
+	signal start		 : std_logic := '0';
+	signal xin			 : std_logic_vector(12 downto 0) := (others => '0');
+	signal yin			 : std_logic_vector(12 downto 0) := (others => '0');
+	signal zin			 : std_logic_vector(12 downto 0) := (others => '0');
+	signal ampin		 : std_logic_vector(7 downto 0) := (others => '0');
+	signal phain		 : std_logic_vector(6 downto 0) := (others => '0');
+	signal rgbin		 : std_logic_vector(23 downto 0) := (others => '0');
+	signal cen			 : std_logic := '0';
+	signal calib		 : std_logic_vector (6 downto 0) := (others => '0');
+	signal caddress	 : std_logic_vector (7 downto 0) := (others => '0');
+
+	signal ack			 : std_logic := '0';
+	signal synccnt		 : std_logic_vector (7 downto 0) := (others => '0');
+	
+	signal holo_phase	 : std_logic_vector (6 downto 0) := (others => '0');
+	signal holo_amp	 : std_logic_vector (6 downto 0) := (others => '0');
+	signal holo_color	 : std_logic_vector (26 downto 0) := (others => '0');
+	signal holo_en  	 : std_logic := '0';
+	signal holo_addr 	 : std_logic_vector (7 downto 0) := (others => '0');
+
+	signal phase		 : std_logic_vector (6 downto 0) := (others => '0');
+	signal amplitude	 : std_logic_vector (6 downto 0) := (others => '0');
+	signal color		 : std_logic_vector (26 downto 0) := (others => '0');
+	signal address 	 : std_logic_vector (7 downto 0) := (others => '0');
+	signal p_enable	 : std_logic := '0';
+	signal a_enable	 : std_logic := '0';
+	signal c_enable	 : std_logic := '0';
+	signal p_swap		 : std_logic := '0';
+	signal a_swap		 : std_logic := '0';
+	signal c_swap		 : std_logic := '0';
+	
+	signal data_s		 : std_logic_vector (31 downto 0) := (others => '0');
+	signal illumi_s	 : std_logic_vector (2 downto 0) := (others => '0');
+	signal rclk_s		 : std_logic := '0';
+	signal debugled_s	 : std_logic_vector (3 downto 0) := (others => '0');
+
+begin
+	
+	DATA	 	  <= data_s;
+	ILLUMI	  <= illumi_s;
+
+	RCLK(3)	  <= rclk_s;
+	RCLK(2)	  <= rclk_s;
+	RCLK(1)	  <= rclk_s;
+	RCLK(0)	  <= rclk_s;
+	SCLK(3)	  <= not nclk_8;
+	SCLK(2)	  <= not nclk_8;
+	SCLK(1)	  <= not nclk_8;
+	SCLK(0)	  <= not nclk_8;
+	
+	SYNC_MAIN  <= count(9) when MS_SELECT = '1' else 'Z';
+	sync_reset <= '0' when MS_SELECT = '1' else SYNC_MAIN;
+
+	VS_TOG	  <= '1';
+	LED		  <= not debugled_s;
+	
+	-- This block generates 40.96MHz clocks
+	inst_Masterclock : Masterclock 
+		port map (
+			inclk0 => clk,
+			c0		 => clk_8,
+			c1		 => nclk_8 );
+
+	-- This block creates the count signal used for timing
+	inst_Counter : Counter 
+	   generic map (
+			COUNTER_BITS => COUNTER_BITS )
+		port map (
+			clk_8		  => clk_8,
+			sync_reset => sync_reset,
+			count		  => count );
+
+	-- This block is the interface to communicate with the USB chip 
+	inst_ParallelReceiver : ParallelReceiver 
+		port map (
+			clk		=> clk,
+			rxf_n 	=> RXF_N,
+			txe_n		=> '1',
+			rd_n		=> RD_N,
+			wr_n 		=> open,
+			usb_data	=> USB_DATA,
+			bus_busy	=> open,
+			tg_ready => '1',--ready,
+			tg_wr		=> '0',
+			tg_di		=> (others => '0'),
+			tg_rd		=> new_rx_data,
+			tg_do		=> rx_data );	
+
+	-- This block converts the input signal into the actual data (e.g. xyz position, RGB colour, phase and amplitude)
+	inst_Distribute : Distribute 
+	   generic map (
+			NUM_TRANSDUCERS => NUM_TRANSDUCERS )
+		port map (
+			clk		 => clk,
+			byte_in	 => new_rx_data,
+			q_in		 => rx_data,
+			ack		 => ack,
+			synccnt	 => synccnt,
+			ready		 => ready,
+			t_en		 => t_en,
+			t_flag	 => t_flag,
+			t_data	 => t_data,
+			t_address => t_address,
+			t_pswap	 => t_pswap,
+			t_aswap	 => t_aswap,
+			rgb_data	 => rgb_data,
+			rgb_en	 => rgb_en,
+			start		 => start,
+			xout		 => xin,
+			yout		 => yin,
+			zout		 => zin,
+			ampout	 => ampin,
+			phaout	 => phain,
+			rgbout	 => rgbin,
+			cen	 	 => cen,
+			calib		 => calib,
+			caddress  => caddress,
+			debugled	 => debugled_s	);
+
+	-- This block calculates a point hologram from the received data (only for MATD mode)
+   inst_PointHoloController : PointHoloController 
+		port map (
+			clk		  => clk,
+			start		  => start,
+			xin		  => xin,
+			yin		  => yin,
+			zin		  => zin,
+			ampin		  => ampin,
+			phain		  => phain,
+			rgbin		  => rgbin,
+			cen		  => cen,
+			calib		  => calib,
+			caddress	  => caddress,
+			ack		  => ack,
+			holo_en	  => holo_en,
+			holo_phase => holo_phase,
+			holo_amp	  => holo_amp,
+			holo_color => holo_color,
+			holo_addr  => holo_addr );
+
+   inst_CalibrationAndMapping : CalibrationAndMapping 
+	   generic map (
+			BOARD_ID => BOARD_ID )
+		port map (
+			clk		  => clk,
+			t_en		  => t_en,
+			t_flag	  => t_flag,
+			t_data	  => t_data,
+			t_address  => t_address,
+			t_pswap	  => t_pswap,
+			t_aswap	  => t_aswap,
+			rgb_data	  => rgb_data,
+			rgb_en	  => rgb_en,
+			holo_en	  => holo_en,
+			holo_phase => holo_phase,
+			holo_amp	  => holo_amp,
+			holo_color => holo_color,
+			holo_addr  => holo_addr,
+			phase		  => phase,
+			amplitude  => amplitude,
+			color		  => color,
+			address	  => address,
+			p_enable	  => p_enable,
+			a_enable	  => a_enable,
+			c_enable	  => c_enable,
+			p_swap	  => p_swap,
+			a_swap	  => a_swap,
+			c_swap	  => c_swap );
+			
+   inst_AllChannels : AllChannels
+	   generic map (
+			NUM_TRANSDUCERS => NUM_TRANSDUCERS )
+		port map (
+			clk		 => clk,
+			clk_8		 => clk_8,
+			count		 => count,
+			phase	 	 => phase,
+			amplitude => amplitude,
+			color		 => color,
+			address	 => address,
+			p_enable	 => p_enable,
+			a_enable	 => a_enable,
+			c_enable	 => c_enable,
+			p_swap	 => p_swap,
+			a_swap	 => a_swap,
+			c_swap	 => c_swap,
+			data		 => data_s,
+			illumi	 => illumi_s,
+			rclk		 => rclk_s,
+			synccnt	 => synccnt	);
+
+end Behavioral;

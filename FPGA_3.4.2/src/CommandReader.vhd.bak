@@ -1,0 +1,400 @@
+-----------------------------------------------------------------------------------
+--     This block converts the input signal into the actual data                 --
+-----------------------------------------------------------------------------------
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity CommandReader is
+	generic (
+		NUM_TRANSDUCERS : integer := 256
+	);
+	port (
+		clk		 : in  std_logic;
+		byte_in   : in  std_logic;
+		q_in 	    : in  std_logic_vector (7 downto 0);
+		almost	 : in  std_logic;
+		ready	    : out std_logic;
+		t_en		 : out std_logic;
+		t_flag	 : out std_logic;
+		t_data	 : out std_logic_vector (6 downto 0);
+		t_address : out std_logic_vector (7 downto 0);
+		t_pswap   : out std_logic;
+		t_aswap   : out std_logic;
+		rgb_data	 : out std_logic_vector (23 downto 0);
+		rgb_en	 : out std_logic;
+		pen		 : out std_logic;
+		xin		 : out std_logic_vector (12 downto 0); 
+		yin		 : out std_logic_vector (12 downto 0); 
+		zin		 : out std_logic_vector (12 downto 0);
+		ampin	    : out std_logic_vector (7 downto 0);
+		phain	    : out std_logic_vector (6 downto 0);
+		rgbin	    : out std_logic_vector (23 downto 0);
+		nframes   : out std_logic_vector (7 downto 0);
+		swap	    : out std_logic;
+		fiforst	 : out std_logic;
+		cen		 : out std_logic;
+		calib	    : out std_logic_vector (6 downto 0);
+		caddress  : out std_logic_vector (7 downto 0);
+		debugled  : out std_logic_vector (3 downto 0)
+	);
+end CommandReader;
+
+architecture Behavioral of CommandReader is
+	
+	component RSSFilter is
+	generic (
+		TAPS: integer := 7 );
+	port (
+		clk	  : in  std_logic;
+		bit_in  : in  std_logic;
+		bit_out : out std_logic );
+	end component;
+
+	signal mode 		: std_logic := '0';
+	type GSPATCommandState is (GSPATIdle, GSPATReadPhases, GSPATReadAmplitudes, GSPATDataSwap );
+	signal GSPATstate : GSPATCommandState := GSPATIdle;	
+	type MATDCommandState is (MATDIdle, MATDReadPoint, MATDUpdate, MATDClear, MATDReadCalib);
+	signal MATDstate : MATDCommandState := MATDIdle;
+
+	signal modeCount 	: std_logic_vector (7 downto 0) := (others => '0'); 
+	
+	signal t_en_s		 : std_logic := '0';
+	signal t_flag_s	 : std_logic := '0';
+	signal t_data_s	 : std_logic_vector (6 downto 0) := (others => '0');
+	signal t_address_s : std_logic_vector (7 downto 0) := (others => '0');
+	signal t_pswap_s	 : std_logic := '0';
+	signal t_aswap_s	 : std_logic := '0';
+
+	signal rgb_data_s	 : std_logic_vector (23 downto 0) := (others => '0');
+	signal rgb_en_s	 : std_logic := '0';
+	signal rgbFlag		 : std_logic := '0';
+
+	signal delay_cnt	 : std_logic_vector (7 downto 0) := (others => '0');
+	signal prev_bin	 : std_logic := '0';
+
+	signal nfreg		 : std_logic_vector (7 downto 0) := (others => '0');
+	signal xreg			 : std_logic_vector (12 downto 0) := (others => '0');
+	signal yreg			 : std_logic_vector (12 downto 0) := (others => '0');
+	signal zreg			 : std_logic_vector (12 downto 0) := (others => '0');
+	signal areg			 : std_logic_vector (7 downto 0) := (others => '0');
+	signal preg			 : std_logic_vector (6 downto 0) := (others => '0');
+	signal rreg			 : std_logic_vector (7 downto 0) := (others => '0');
+	signal greg			 : std_logic_vector (7 downto 0) := (others => '0');
+	signal breg			 : std_logic_vector (7 downto 0) := (others => '0');
+	
+	signal ready_s		 : std_logic := '0';
+	signal pen_s		 : std_logic := '0';
+	signal xin_s		 : std_logic_vector (12 downto 0) := (others => '0');
+	signal yin_s		 : std_logic_vector (12 downto 0) := (others => '0');
+	signal zin_s		 : std_logic_vector (12 downto 0) := (others => '0');
+	signal ampin_s		 : std_logic_vector (7 downto 0) := (others => '0');
+	signal phain_s		 : std_logic_vector (6 downto 0) := (others => '0');
+	signal rgbin_s		 : std_logic_vector (23 downto 0) := (others => '0');
+
+	signal nframes_s	 : std_logic_vector (7 downto 0) := (others => '0');
+	signal fcount		 : std_logic_vector (7 downto 0) := (others => '0');
+	signal swap_s		 : std_logic := '0';
+	signal fiforst_s	 : std_logic := '0';
+	
+	signal byteCount	 : std_logic_vector (7 downto 0) := (others => '0');
+	signal flag			 : std_logic_vector (3 downto 0) := (others => '0');
+	 
+	signal cen_s		 : std_logic := '0';
+	signal calib_s		 : std_logic_vector (6 downto 0) := (others => '0');
+	signal caddress_s  : std_logic_vector (7 downto 0) := (others => '0');
+
+	signal debugled_s  : std_logic_vector (3 downto 0) := (others => '0');
+
+begin
+
+	t_en      <= t_en_s;
+	t_flag    <= t_flag_s;
+	t_data    <= t_data_s;
+	t_address <= t_address_s;
+	t_pswap   <= t_pswap_s;
+	t_aswap   <= t_aswap_s;
+
+	rgb_data  <= rgb_data_s;
+	rgb_en	 <= rgb_en_s;
+
+	ready		 <= ready_s;
+	pen		 <= pen_s;
+	xin		 <= xin_s;
+	yin		 <= yin_s;
+	zin		 <= zin_s;
+	ampin		 <= ampin_s;
+	phain		 <= phain_s;
+	rgbin		 <= rgbin_s;
+	
+	nframes	 <= nframes_s;
+	swap		 <= swap_s;
+	fiforst   <= fiforst_s;
+	
+	cen		 <= cen_s;
+	calib		 <= calib_s;
+	caddress	 <= caddress_s;
+	
+	debugled  <= debugled_s;
+	
+	process (clk) begin
+		if (rising_edge(clk)) then
+			if(mode = '0') then -- GSPAT mode
+				debugled_s <= "1110";
+				case GSPATstate is
+					when GSPATIdle => 
+						if (byte_in = '1' and q_in(7) = '1') then
+							GSPATstate <= GSPATReadPhases;
+							t_en_s <= '1';
+							t_data_s <= q_in(6 downto 0);
+							byteCount <= byteCount + '1';
+						else
+							GSPATstate <= GSPATIdle;
+							t_en_s <= '0';
+							t_data_s <= (others => '0');
+							byteCount <= (others => '0');				
+						end if;
+						t_address_s <= (others => '0');
+						t_flag_s <= '0';
+						t_pswap_s <= '0';
+						t_aswap_s <= '0';
+						rgb_en_s <= '0';
+						rgbFlag <= '0';
+					
+					when GSPATReadPhases =>
+						if (byte_in = '1') then
+							if (byteCount = NUM_TRANSDUCERS - 1) then
+								GSPATstate <= GSPATReadAmplitudes;
+								byteCount <= (others => '0');
+							else
+								GSPATstate <= GSPATReadPhases;
+								byteCount <= byteCount + '1';
+							end if;
+							t_en_s <= '1';
+							t_data_s <= q_in(6 downto 0);
+							t_address_s <= byteCount;
+							
+							if(byteCount < 25) then
+								rgb_data_s(CONV_INTEGER(byteCount - '1')) <= q_in(7);
+							elsif(byteCount = 25) then
+								rgbFlag <= q_in(7);
+							end if;
+						else
+							t_en_s <= '0';
+							t_data_s <= (others => '0');
+							t_address_s <= (others => '0');
+						end if;
+						t_flag_s <= '0';
+						t_pswap_s <= '0';
+						t_aswap_s <= '0';
+						rgb_en_s <= '0';
+						
+					when GSPATReadAmplitudes =>
+						if (byte_in = '1') then
+							if (byteCount = NUM_TRANSDUCERS - 1) then
+								GSPATstate <= GSPATDataSwap;
+								byteCount <= (others => '0');
+							else
+								GSPATstate <= GSPATReadAmplitudes;
+								byteCount <= byteCount + '1';
+							end if;
+							t_en_s <= '1';
+							t_data_s <= q_in(6 downto 0);
+							t_address_s <= byteCount;
+						else
+							t_en_s <= '0';
+							t_data_s <= (others => '0');
+							t_address_s <= (others => '0');
+						end if;
+						t_flag_s <= '1';
+						t_pswap_s <= '0';
+						t_aswap_s <= '0';
+						rgb_en_s <= '0';
+
+					when GSPATDataSwap =>
+						GSPATstate <= GSPATIdle;
+						t_en_s <= '0';
+						t_data_s <= (others => '0');
+						t_address_s <= (others => '0');
+						t_flag_s <= '0';			
+						t_pswap_s <= '1';
+						t_aswap_s <= '1';
+						rgb_en_s <= rgbFlag;
+						
+					when others =>
+						GSPATstate <= GSPATIdle;
+				
+				end case;
+				
+				if (byte_in = '1') then
+					if(q_in = "11111111") then
+						if(modeCount = "11111111") then
+							mode <= '1';
+							modeCount <= (others => '0');
+						else
+							modeCount <= modeCount + '1';
+						end if;
+					else
+						modeCount <= (others => '0');
+					end if;
+				end if;	
+				
+				MATDstate <= MATDIdle;
+				pen_s <= '0';
+				xin_s <= (others => '0');
+				yin_s <= (others => '0');
+				zin_s <= (others => '0');
+				ampin_s <= (others => '0');
+				phain_s <= (others => '0');
+				rgbin_s <= (others => '0');
+				nframes_s <= (others => '0');
+				swap_s <= '0';					
+				fiforst_s <= '0';
+				cen_s <= '0';
+				calib_s <= (others => '0');
+				caddress_s <= (others => '0');
+				
+			else	-- MATD mode
+				debugled_s <= "0001";
+				case MATDstate is
+					when MATDIdle => 
+						if (byte_in = '1') then
+							if(q_in = "00000000") then -- 0 is to change the mode to GSPAT
+								MATDstate <= MATDIdle;
+								mode <= '0';
+								swap_s <= '0';
+								fiforst_s <= '0';
+							elsif(q_in = "11111111" or q_in = "11111110" or q_in = "11111101") then -- 255 or 254 or 253 is to reset
+								MATDstate <= MATDIdle;
+								swap_s <= '0';
+								fiforst_s <= '1';																
+							elsif(q_in = "11111100") then		-- 252 is start reading calibration data
+								MATDstate <= MATDReadCalib;
+								byteCount <= (others => '0');
+								swap_s <= '0';
+								fiforst_s <= '0';
+							elsif(q_in = "11111011") then		-- 251 is start hologram calculation signal 
+								MATDstate <= MATDIdle;
+								swap_s <= '1';					
+								fiforst_s <= '0';
+							else										-- other number tells us the number of frames
+								MATDstate <= MATDReadPoint;
+								nfreg <= q_in;
+								fcount <= (others => '0');
+								flag <= (others => '0');
+								swap_s <= '0';
+								fiforst_s <= '0';
+							end if;
+						else
+							swap_s <= '0';
+							fiforst_s <= '0';
+						end if;
+						cen_s <= '0';
+						calib_s <= (others => '0');
+						caddress_s <= (others => '0');
+						t_en_s <= '0';
+						t_data_s <= (others => '0');
+						t_address_s <= (others => '0');
+					
+					when MATDReadCalib =>
+						if (byte_in = '1') then
+							if (byteCount = NUM_TRANSDUCERS - 1) then
+								MATDstate <= MATDIdle;
+							end if;
+							cen_s <= '1';
+							calib_s <= q_in(6 downto 0);
+							caddress_s <= byteCount;
+							byteCount <= byteCount + '1';
+						else
+							cen_s <= '0';
+							calib_s <= (others => '0');
+							caddress_s <= (others => '0');
+						end if;
+						
+					when MATDReadPoint =>
+						if (byte_in = '1') then
+							if (flag = "0000") then
+								xreg(7 downto 0) <= q_in;
+							elsif (flag = "0001") then
+								xreg(12 downto 8) <= q_in(4 downto 0);
+								yreg(2 downto 0) <= q_in(7 downto 5);
+							elsif (flag = "0010") then
+								yreg(10 downto 3) <= q_in(7 downto 0);
+							elsif (flag = "0011") then
+								yreg(12 downto 11) <= q_in(1 downto 0);
+								zreg(5 downto 0) <= q_in(7 downto 2);
+							elsif (flag = "0100") then
+								zreg(12 downto 6) <= q_in(6 downto 0);
+							elsif (flag = "0101") then
+								areg <= q_in;
+							elsif (flag = "0110") then
+								preg <= q_in(6 downto 0);
+							elsif (flag = "0111") then
+								rreg <= q_in;
+							elsif (flag = "1000") then
+								greg <= q_in;
+							elsif (flag = "1001") then
+								breg <= q_in;
+								MATDstate <= MATDUpdate;
+							end if;
+							flag <= flag + '1';
+						end if;
+						pen_s <= '0';
+
+					when MATDUpdate =>
+						MATDstate <= MATDClear;
+						nframes_s <= nfreg;
+						pen_s <= '1';
+						xin_s <= xreg;
+						yin_s <= yreg;
+						zin_s <= zreg;
+						ampin_s <= areg;
+						phain_s <= preg;
+						rgbin_s <= breg & greg & rreg;
+						flag <= (others => '0');
+						
+					when MATDClear =>
+						if(fcount = nfreg - '1') then
+							MATDstate <= MATDIdle;
+						else
+							MATDstate <= MATDReadPoint;
+							fcount <= fcount + '1';
+						end if;
+						pen_s <= '0';
+						xin_s <= (others => '0');
+						yin_s <= (others => '0');
+						zin_s <= (others => '0');
+						ampin_s <= (others => '0');
+						phain_s <= (others => '0');
+						rgbin_s <= (others => '0');
+						
+					when others =>
+						MATDstate <= MATDIdle;
+						
+				end case;
+				
+				GSPATstate <= GSPATIdle;
+				t_en_s <= '0';
+				t_flag_s <= '0';
+				t_data_s <= (others => '0');
+				t_address_s <= (others => '0');
+				t_pswap_s <= '0';
+				t_aswap_s <= '0';
+				rgb_en_s <= '0';
+				modeCount <= (others => '0');
+			end if;
+		end if;
+	end process;
+		
+	process (clk) begin
+		if (rising_edge(clk)) then	
+			if (almost = '0') then
+				ready_s <= '1';
+			elsif (mode = '1' and MATDstate = MATDIdle and byte_in = '1' and q_in = "11111011") then
+				ready_s <= '0';
+			end if;
+		end if;
+	end process;
+	
+end Behavioral;

@@ -1,0 +1,871 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/simulation/modelsim
+Eallchannels
+Z1 w1631025266
+Z2 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R0
+Z5 8C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/AllChannels.vhd
+Z6 FC:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/AllChannels.vhd
+l0
+L5
+V_6fck:h=P`igQXGdG=KlW2
+!s100 eOkUgdIa1753JX;?Xb8;d2
+Z7 OV;C;10.5b;63
+31
+Z8 !s110 1658155690
+!i10b 1
+Z9 !s108 1658155690.000000
+Z10 !s90 -reportprogress|300|-93|-work|work|C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/AllChannels.vhd|
+Z11 !s107 C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/AllChannels.vhd|
+!i113 1
+Z12 o-93 -work work
+Z13 tExplicit 1 CvgOpt 0
+Abehavioral
+R2
+R3
+R4
+DEx4 work 11 allchannels 0 22 _6fck:h=P`igQXGdG=KlW2
+l114
+L30
+V^jUA@]^hZa`o;SNkC?EMi1
+!s100 P0@WXDLKz0SFZTm[C[mCT1
+R7
+31
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Eamplituderam
+Z14 w1613390452
+Z15 DPx9 altera_mf 20 altera_mf_components 0 22 gV:l9C^?PSb6]b5V?_jR@3
+R3
+R4
+R0
+Z16 8C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/AmplitudeRAM.vhd
+Z17 FC:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/AmplitudeRAM.vhd
+l0
+L42
+VFHEY^fdjf>YjDHg5:D=<V1
+!s100 Jk77^oeA6EH]gDHRjejgB3
+R7
+31
+R8
+!i10b 1
+R9
+Z18 !s90 -reportprogress|300|-93|-work|work|C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/AmplitudeRAM.vhd|
+Z19 !s107 C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/AmplitudeRAM.vhd|
+!i113 1
+R12
+R13
+Asyn
+R15
+R3
+R4
+DEx4 work 12 amplituderam 0 22 FHEY^fdjf>YjDHg5:D=<V1
+l60
+L56
+VIbI1YNE[>]2SZhIdlK54B1
+!s100 n`<P<eZSJZ>boQYfok2iK0
+R7
+31
+R8
+!i10b 1
+R9
+R18
+R19
+!i113 1
+R12
+R13
+Ecalibrationandmapping
+Z20 w1631031337
+Z21 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z22 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+R3
+R4
+R0
+Z23 8C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/CalibrationAndMapping.vhd
+Z24 FC:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/CalibrationAndMapping.vhd
+l0
+L9
+V@f@]MCW1FcZoVoaRVUEYZ3
+!s100 jI6Wc8gi_=`lMZ:RaSXT`1
+R7
+31
+Z25 !s110 1658155691
+!i10b 1
+Z26 !s108 1658155691.000000
+Z27 !s90 -reportprogress|300|-93|-work|work|C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/CalibrationAndMapping.vhd|
+Z28 !s107 C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/CalibrationAndMapping.vhd|
+!i113 1
+R12
+R13
+Abehavioral
+R21
+R22
+R3
+R4
+DEx4 work 21 calibrationandmapping 0 22 @f@]MCW1FcZoVoaRVUEYZ3
+l84
+L36
+VTJ0>b<cN9UECll>UFIZ0T0
+!s100 YT0U7RnHM_?05]nTHV5D]2
+R7
+31
+R25
+!i10b 1
+R26
+R27
+R28
+!i113 1
+R12
+R13
+Ecommandreader
+Z29 w1631026024
+R21
+R22
+R3
+R4
+R0
+Z30 8C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/CommandReader.vhd
+Z31 FC:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/CommandReader.vhd
+l0
+L9
+VW_ij^OHzV7`?eTelgI^QI2
+!s100 U^l[FckcNciUDHHOQOWi03
+R7
+31
+R8
+!i10b 1
+R9
+Z32 !s90 -reportprogress|300|-93|-work|work|C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/CommandReader.vhd|
+Z33 !s107 C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/CommandReader.vhd|
+!i113 1
+R12
+R13
+Abehavioral
+R21
+R22
+R3
+R4
+DEx4 work 13 commandreader 0 22 W_ij^OHzV7`?eTelgI^QI2
+l62
+L30
+VOS58UhNMlI1MCIRW_UUo61
+!s100 1>QCncT?oYge29kTe8eL11
+R7
+31
+R8
+!i10b 1
+R9
+R32
+R33
+!i113 1
+R12
+R13
+Ecounter
+Z34 w1613557628
+R22
+R21
+R3
+R4
+R0
+Z35 8C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/Counter.vhd
+Z36 FC:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/Counter.vhd
+l0
+L10
+Vho9kIf>I_92WcgecU3U_S0
+!s100 OeVO]]gkkak4j?SUZfTLz1
+R7
+31
+R8
+!i10b 1
+R9
+Z37 !s90 -reportprogress|300|-93|-work|work|C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/Counter.vhd|
+Z38 !s107 C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/Counter.vhd|
+!i113 1
+R12
+R13
+Abehavioral
+R22
+R21
+R3
+R4
+DEx4 work 7 counter 0 22 ho9kIf>I_92WcgecU3U_S0
+l43
+L21
+V[zgfoDXekQI02NKYo8Ccj3
+!s100 B>DkTIET9^kM?fdMLebn_0
+R7
+31
+R8
+!i10b 1
+R9
+R37
+R38
+!i113 1
+R12
+R13
+Edistribute
+Z39 w1614666205
+R21
+R22
+R3
+R4
+R0
+Z40 8C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/Distribute.vhd
+Z41 FC:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/Distribute.vhd
+l0
+L9
+VAhIg><@al^@m<MSMW:nA]3
+!s100 1XXT6`G7`YeB3k[YjfH=P2
+R7
+31
+R8
+!i10b 1
+R9
+Z42 !s90 -reportprogress|300|-93|-work|work|C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/Distribute.vhd|
+Z43 !s107 C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/Distribute.vhd|
+!i113 1
+R12
+R13
+Abehavioral
+R21
+R22
+R3
+R4
+DEx4 work 10 distribute 0 22 AhIg><@al^@m<MSMW:nA]3
+l99
+L31
+V_LVi7b0bbNN1C`h>^fGUb0
+!s100 :e<]YblIKZIQ?V]ggLcY]2
+R7
+31
+R8
+!i10b 1
+R9
+R42
+R43
+!i113 1
+R12
+R13
+Eframebuffercontroller
+Z44 w1658154855
+R22
+R21
+R3
+R4
+R0
+Z45 8C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/FrameBufferController.vhd
+Z46 FC:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/FrameBufferController.vhd
+l0
+L10
+VFjDNaoLjToTSklf]24_l@2
+!s100 ;D<]B:QP=f>jAU=_6Nfnj1
+R7
+31
+R25
+!i10b 1
+R26
+Z47 !s90 -reportprogress|300|-93|-work|work|C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/FrameBufferController.vhd|
+Z48 !s107 C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/FrameBufferController.vhd|
+!i113 1
+R12
+R13
+Abehavioral
+R22
+R21
+R3
+R4
+DEx4 work 21 framebuffercontroller 0 22 FjDNaoLjToTSklf]24_l@2
+l66
+L27
+V^>H<mLV7EmHQk8=EMZ;e@2
+!s100 4kAIHd>B7IS;0AjXHoRTl1
+R7
+31
+R25
+!i10b 1
+R26
+R47
+R48
+!i113 1
+R12
+R13
+Eframebufferfifo
+Z49 w1657901669
+R3
+R4
+R0
+Z50 8C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/FrameBufferFIFO.vhd
+Z51 FC:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/FrameBufferFIFO.vhd
+l0
+L42
+V`W@G3<Lf:K1O6e@nBJgY41
+!s100 OcC;Ln=oHA4:9ni^dG=2>1
+R7
+31
+R25
+!i10b 1
+R26
+Z52 !s90 -reportprogress|300|-93|-work|work|C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/FrameBufferFIFO.vhd|
+Z53 !s107 C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/FrameBufferFIFO.vhd|
+!i113 1
+R12
+R13
+Asyn
+R3
+R4
+DEx4 work 15 framebufferfifo 0 22 `W@G3<Lf:K1O6e@nBJgY41
+l93
+L58
+VAU:zfG@A4O[X=__4o`H6Y2
+!s100 <mbD7aT3hlM>]X567`XSz1
+R7
+31
+R25
+!i10b 1
+R26
+R52
+R53
+!i113 1
+R12
+R13
+Egammacorrection
+R14
+R3
+R4
+R0
+Z54 8C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/GammaCorrection.vhd
+Z55 FC:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/GammaCorrection.vhd
+l0
+L4
+V]Ld8gJF:3HG171o<88^U=3
+!s100 @iRAl;:SFRRQk`?GD;2Ed2
+R7
+31
+R8
+!i10b 1
+R9
+Z56 !s90 -reportprogress|300|-93|-work|work|C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/GammaCorrection.vhd|
+Z57 !s107 C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/GammaCorrection.vhd|
+!i113 1
+R12
+R13
+Abehavioral
+R3
+R4
+DEx4 work 15 gammacorrection 0 22 ]Ld8gJF:3HG171o<88^U=3
+l33
+L14
+VZ0li<m]cKf:7=3G?eID9M1
+!s100 ndXoLS7GeCgzHm[_l5a<g0
+R7
+31
+R8
+!i10b 1
+R9
+R56
+R57
+!i113 1
+R12
+R13
+Egammacorrectionlut
+R14
+R15
+R3
+R4
+R0
+Z58 8C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/GammaCorrectionLUT.vhd
+Z59 FC:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/GammaCorrectionLUT.vhd
+l0
+L42
+V1H8c0FVzM6F6NR<42g_Ia1
+!s100 XE>eBCVAH37nhf?l_dARl2
+R7
+31
+R8
+!i10b 1
+R9
+Z60 !s90 -reportprogress|300|-93|-work|work|C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/GammaCorrectionLUT.vhd|
+Z61 !s107 C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/GammaCorrectionLUT.vhd|
+!i113 1
+R12
+R13
+Asyn
+R15
+R3
+R4
+DEx4 work 18 gammacorrectionlut 0 22 1H8c0FVzM6F6NR<42g_Ia1
+l56
+L52
+V]k^:Oi8JFFAT^C1MYBmCC3
+!s100 c2j2@4zNKRQY[BFRl`V[f1
+R7
+31
+R8
+!i10b 1
+R9
+R60
+R61
+!i113 1
+R12
+R13
+Eholo_tb
+Z62 w1658155680
+Z63 DPx12 modelsim_lib 4 util 0 22 I9VUm]?fD[2nYZzgoDM?l2
+R21
+R22
+R2
+R3
+R4
+R0
+Z64 8C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/holo_tb.vhd
+Z65 FC:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/holo_tb.vhd
+l0
+L11
+VOZ?30dm3Hk^OTFn3DQnX^2
+!s100 IdH7Je8?PUYNH`IS?O8o[1
+R7
+31
+R25
+!i10b 1
+R26
+Z66 !s90 -reportprogress|300|-93|-work|work|C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/holo_tb.vhd|
+Z67 !s107 C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/holo_tb.vhd|
+!i113 1
+R12
+R13
+Artl
+R63
+R21
+R22
+R2
+R3
+R4
+DEx4 work 7 holo_tb 0 22 OZ?30dm3Hk^OTFn3DQnX^2
+l78
+L15
+Vl<nk_ZN`nVWUFOOUcHCo`3
+!s100 =ThXk=;OKU6Nga71M7Sz<2
+R7
+31
+R25
+!i10b 1
+R26
+R66
+R67
+!i113 1
+R12
+R13
+Emasterclock
+Z68 w1613390453
+R3
+R4
+R0
+Z69 8C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/Masterclock.vhd
+Z70 FC:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/Masterclock.vhd
+l0
+L42
+VJg;A5DbRGGLSUcb2@S2dV2
+!s100 c2]a=_0VInz1[KbDI6lPP2
+R7
+31
+R8
+!i10b 1
+R9
+Z71 !s90 -reportprogress|300|-93|-work|work|C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/Masterclock.vhd|
+Z72 !s107 C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/Masterclock.vhd|
+!i113 1
+R12
+R13
+Asyn
+R3
+R4
+DEx4 work 11 masterclock 0 22 Jg;A5DbRGGLSUcb2@S2dV2
+l131
+L52
+VznP>O8o;i;mBb>]EbVi=n0
+!s100 S_zW3XeHgRho38TgA_mjj2
+R7
+31
+R8
+!i10b 1
+R9
+R71
+R72
+!i113 1
+R12
+R13
+vMasterclock_altpll
+R8
+!i10b 1
+!s100 `8;BGV;=>]ci8]S9V=PA:1
+IU<MXKe:63DT0eUfM5VV7?2
+VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1613390448
+8C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/db/masterclock_altpll.v
+FC:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/db/masterclock_altpll.v
+L0 29
+OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1658155689.000000
+!s107 C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/db/masterclock_altpll.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/db|C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/db/masterclock_altpll.v|
+!i113 1
+o-vlog01compat -work work
+!s92 -vlog01compat -work work +incdir+C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/db
+tCvgOpt 0
+n@masterclock_altpll
+Emuxphase
+R68
+R21
+R22
+R3
+R4
+R0
+Z73 8C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/MuxPhase.vhd
+Z74 FC:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/MuxPhase.vhd
+l0
+L5
+VLQ[8>8^M>@ng;:5^@=ab33
+!s100 Y>EOgImSYmGz7CeO2n3N60
+R7
+31
+R8
+!i10b 1
+R9
+Z75 !s90 -reportprogress|300|-93|-work|work|C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/MuxPhase.vhd|
+Z76 !s107 C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/MuxPhase.vhd|
+!i113 1
+R12
+R13
+Abehavioral
+R21
+R22
+R3
+R4
+DEx4 work 8 muxphase 0 22 LQ[8>8^M>@ng;:5^@=ab33
+l20
+L14
+VzOiAdn`Gl=8e`RmI3SX[c3
+!s100 ;1jNl64f1;^6]aH:RJHg^2
+R7
+31
+R8
+!i10b 1
+R9
+R75
+R76
+!i113 1
+R12
+R13
+Eparallelreceiver
+R68
+R2
+R3
+R4
+R0
+Z77 8C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/ParallelReceiver.vhd
+Z78 FC:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/ParallelReceiver.vhd
+l0
+L5
+V?5Z64;g[PdUmJ6dJaR65h1
+!s100 DiXCMeLX@7bMC_zoan99a3
+R7
+31
+R8
+!i10b 1
+R9
+Z79 !s90 -reportprogress|300|-93|-work|work|C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/ParallelReceiver.vhd|
+Z80 !s107 C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/ParallelReceiver.vhd|
+!i113 1
+R12
+R13
+Artl
+R2
+R3
+R4
+DEx4 work 16 parallelreceiver 0 22 ?5Z64;g[PdUmJ6dJaR65h1
+l43
+L21
+VhPbiED<0QNl@ZjSLjX09I2
+!s100 AmE]Hm3^dS4cnS`e1;Xni3
+R7
+31
+R8
+!i10b 1
+R9
+R79
+R80
+!i113 1
+R12
+R13
+Ephasecalibration
+R68
+Z81 DPx4 ieee 16 std_logic_signed 0 22 C<aanc0R`<LWPSe[JYRP^3
+R21
+R3
+R4
+R0
+Z82 8C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/PhaseCalibration.vhd
+Z83 FC:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/PhaseCalibration.vhd
+l0
+L6
+VVz=C0S26aDB>7O80YzZ=l2
+!s100 0gO9A9eDCVIzJInjQi14]0
+R7
+31
+R25
+!i10b 1
+R26
+Z84 !s90 -reportprogress|300|-93|-work|work|C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/PhaseCalibration.vhd|
+Z85 !s107 C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/PhaseCalibration.vhd|
+!i113 1
+R12
+R13
+Abehavioral
+R81
+R21
+R3
+R4
+DEx4 work 16 phasecalibration 0 22 Vz=C0S26aDB>7O80YzZ=l2
+l198
+L22
+VT5QFLa<hmFKVd:K6^?;^D2
+!s100 <OUPC59f5AFanOCiHZFoT3
+R7
+31
+R25
+!i10b 1
+R26
+R84
+R85
+!i113 1
+R12
+R13
+Ephaseram
+R68
+R15
+R3
+R4
+R0
+Z86 8C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/PhaseRAM.vhd
+Z87 FC:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/PhaseRAM.vhd
+l0
+L42
+V;knZ4FS<9RKRLeXTSXO>[3
+!s100 PkXInNP:C7:Rl4^I]Ghk01
+R7
+31
+R8
+!i10b 1
+R9
+Z88 !s90 -reportprogress|300|-93|-work|work|C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/PhaseRAM.vhd|
+Z89 !s107 C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/PhaseRAM.vhd|
+!i113 1
+R12
+R13
+Asyn
+R15
+R3
+R4
+DEx4 work 8 phaseram 0 22 ;knZ4FS<9RKRLeXTSXO>[3
+l60
+L56
+V5c]PSXcS:bagGFKLFnG2i0
+!s100 >U2Y8UU2a@3EZeKzEJHWO2
+R7
+31
+R8
+!i10b 1
+R9
+R88
+R89
+!i113 1
+R12
+R13
+Epinmapping
+R68
+R22
+R21
+R3
+R4
+R0
+Z90 8C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/PinMapping.vhd
+Z91 FC:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/PinMapping.vhd
+l0
+L6
+VFR1R_4zb3S41LTm?`E:_:1
+!s100 e:091h_]n[MW4P8hn8TeU1
+R7
+31
+R25
+!i10b 1
+R26
+Z92 !s90 -reportprogress|300|-93|-work|work|C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/PinMapping.vhd|
+Z93 !s107 C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/PinMapping.vhd|
+!i113 1
+R12
+R13
+Abehavioral
+R22
+R21
+R3
+R4
+DEx4 work 10 pinmapping 0 22 FR1R_4zb3S41LTm?`E:_:1
+l57
+L14
+V>iR2=E6geN5J0GdameWD=3
+!s100 oBdB1TkT>`8>cmkMY:El=0
+R7
+31
+R25
+!i10b 1
+R26
+R92
+R93
+!i113 1
+R12
+R13
+Epulsewidthmodulator
+Z94 w1613390454
+R22
+R21
+R3
+R4
+R0
+Z95 8C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/PulseWidthModulator.vhd
+Z96 FC:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/PulseWidthModulator.vhd
+l0
+L6
+Ve5VdeHFF=QX6L0nZNl0VP2
+!s100 ?@Lclmec:2ZL_QLjidf753
+R7
+31
+R8
+!i10b 1
+R9
+Z97 !s90 -reportprogress|300|-93|-work|work|C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/PulseWidthModulator.vhd|
+Z98 !s107 C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/PulseWidthModulator.vhd|
+!i113 1
+R12
+R13
+Abehavioral
+R22
+R21
+R3
+R4
+DEx4 work 19 pulsewidthmodulator 0 22 e5VdeHFF=QX6L0nZNl0VP2
+l24
+L15
+V7kj?UnEjIhfFAJ2`2fW>?3
+!s100 d9g`G6F7U[4Y_bAlO80V[3
+R7
+31
+R8
+!i10b 1
+R9
+R97
+R98
+!i113 1
+R12
+R13
+Erssfilter
+R94
+R3
+R4
+R0
+Z99 8C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/RSSFilter.vhd
+Z100 FC:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/RSSFilter.vhd
+l0
+L8
+V1PU^oQhW2YV4ZgFIMzl5V2
+!s100 g>`JWYJd2?Ei@Sz81=9Ji2
+R7
+31
+R8
+!i10b 1
+R9
+Z101 !s90 -reportprogress|300|-93|-work|work|C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/RSSFilter.vhd|
+Z102 !s107 C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/RSSFilter.vhd|
+!i113 1
+R12
+R13
+Abehavioral
+R3
+R4
+DEx4 work 9 rssfilter 0 22 1PU^oQhW2YV4ZgFIMzl5V2
+l22
+L17
+Vk=B`B`:jaDTEYaIL_e>Me0
+!s100 M5gkz4hTBZ[4ZVToD4QVh1
+R7
+31
+R8
+!i10b 1
+R9
+R101
+R102
+!i113 1
+R12
+R13
+Etop
+Z103 w1614669830
+R21
+R22
+R3
+R4
+R0
+Z104 8C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/top.vhd
+Z105 FC:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/top.vhd
+l0
+L11
+V_kR?]VR[jh7V1ggSRizkB2
+!s100 [QOhRkET9MbjK6Yhid8;B1
+R7
+31
+R8
+!i10b 1
+R9
+Z106 !s90 -reportprogress|300|-93|-work|work|C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/top.vhd|
+Z107 !s107 C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/top.vhd|
+!i113 1
+R12
+R13
+Abehavioral
+R21
+R22
+R3
+R4
+DEx4 work 3 top 0 22 _kR?]VR[jh7V1ggSRizkB2
+l187
+L39
+VNcSG0:<mCcZ5:QU_l6dS42
+!s100 @mLNin_;GVc;Sjnj^nbS21
+R7
+31
+R8
+!i10b 1
+R9
+R106
+R107
+!i113 1
+R12
+R13

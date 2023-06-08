@@ -1,0 +1,365 @@
+# Reading C:/intelFPGA_lite/18.1/modelsim_ase/tcl/vsim/pref.tcl
+# do AcoustophoreticBoard_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap work rtl_work 
+# Copying C:/intelFPGA_lite/18.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/db {C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/db/masterclock_altpll.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:48:09 on Jul 18,2022
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/db" C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/db/masterclock_altpll.v 
+# -- Compiling module Masterclock_altpll
+# 
+# Top level modules:
+# 	Masterclock_altpll
+# End time: 15:48:10 on Jul 18,2022, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/RSSFilter.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:48:10 on Jul 18,2022
+# vcom -reportprogress 300 -93 -work work C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/RSSFilter.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity RSSFilter
+# -- Compiling architecture Behavioral of RSSFilter
+# End time: 15:48:10 on Jul 18,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/top.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:48:10 on Jul 18,2022
+# vcom -reportprogress 300 -93 -work work C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/top.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Compiling entity top
+# -- Compiling architecture Behavioral of top
+# End time: 15:48:10 on Jul 18,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/MuxPhase.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:48:10 on Jul 18,2022
+# vcom -reportprogress 300 -93 -work work C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/MuxPhase.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Compiling entity MuxPhase
+# -- Compiling architecture Behavioral of MuxPhase
+# End time: 15:48:10 on Jul 18,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/Distribute.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:48:10 on Jul 18,2022
+# vcom -reportprogress 300 -93 -work work C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/Distribute.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Compiling entity Distribute
+# -- Compiling architecture Behavioral of Distribute
+# End time: 15:48:10 on Jul 18,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/Counter.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:48:10 on Jul 18,2022
+# vcom -reportprogress 300 -93 -work work C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/Counter.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Compiling entity Counter
+# -- Compiling architecture Behavioral of Counter
+# End time: 15:48:10 on Jul 18,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/AllChannels.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:48:10 on Jul 18,2022
+# vcom -reportprogress 300 -93 -work work C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/AllChannels.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity AllChannels
+# -- Compiling architecture Behavioral of AllChannels
+# End time: 15:48:10 on Jul 18,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/Masterclock.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:48:10 on Jul 18,2022
+# vcom -reportprogress 300 -93 -work work C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/Masterclock.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity Masterclock
+# -- Compiling architecture SYN of masterclock
+# End time: 15:48:10 on Jul 18,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/PhaseRAM.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:48:10 on Jul 18,2022
+# vcom -reportprogress 300 -93 -work work C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/PhaseRAM.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package altera_mf_components
+# -- Compiling entity PhaseRAM
+# -- Compiling architecture SYN of phaseram
+# End time: 15:48:10 on Jul 18,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/AmplitudeRAM.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:48:10 on Jul 18,2022
+# vcom -reportprogress 300 -93 -work work C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/AmplitudeRAM.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package altera_mf_components
+# -- Compiling entity AmplitudeRAM
+# -- Compiling architecture SYN of amplituderam
+# End time: 15:48:10 on Jul 18,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/CommandReader.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:48:10 on Jul 18,2022
+# vcom -reportprogress 300 -93 -work work C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/CommandReader.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Compiling entity CommandReader
+# -- Compiling architecture Behavioral of CommandReader
+# End time: 15:48:10 on Jul 18,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/GammaCorrection.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:48:10 on Jul 18,2022
+# vcom -reportprogress 300 -93 -work work C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/GammaCorrection.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity GammaCorrection
+# -- Compiling architecture Behavioral of GammaCorrection
+# End time: 15:48:10 on Jul 18,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/GammaCorrectionLUT.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:48:10 on Jul 18,2022
+# vcom -reportprogress 300 -93 -work work C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/GammaCorrectionLUT.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package altera_mf_components
+# -- Compiling entity GammaCorrectionLUT
+# -- Compiling architecture SYN of gammacorrectionlut
+# End time: 15:48:10 on Jul 18,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/PulseWidthModulator.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:48:10 on Jul 18,2022
+# vcom -reportprogress 300 -93 -work work C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/PulseWidthModulator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Compiling entity PulseWidthModulator
+# -- Compiling architecture Behavioral of PulseWidthModulator
+# End time: 15:48:10 on Jul 18,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/ParallelReceiver.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:48:10 on Jul 18,2022
+# vcom -reportprogress 300 -93 -work work C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/ParallelReceiver.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity ParallelReceiver
+# -- Compiling architecture rtl of ParallelReceiver
+# End time: 15:48:10 on Jul 18,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/CalibrationAndMapping.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:48:11 on Jul 18,2022
+# vcom -reportprogress 300 -93 -work work C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/CalibrationAndMapping.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Compiling entity CalibrationAndMapping
+# -- Compiling architecture Behavioral of CalibrationAndMapping
+# End time: 15:48:11 on Jul 18,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/PhaseCalibration.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:48:11 on Jul 18,2022
+# vcom -reportprogress 300 -93 -work work C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/PhaseCalibration.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_SIGNED
+# -- Compiling entity PhaseCalibration
+# -- Compiling architecture Behavioral of PhaseCalibration
+# End time: 15:48:11 on Jul 18,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/PinMapping.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:48:11 on Jul 18,2022
+# vcom -reportprogress 300 -93 -work work C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/PinMapping.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Compiling entity PinMapping
+# -- Compiling architecture Behavioral of PinMapping
+# End time: 15:48:11 on Jul 18,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/FrameBufferController.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:48:11 on Jul 18,2022
+# vcom -reportprogress 300 -93 -work work C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/FrameBufferController.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Compiling entity FrameBufferController
+# -- Compiling architecture Behavioral of FrameBufferController
+# End time: 15:48:11 on Jul 18,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/FrameBufferFIFO.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:48:11 on Jul 18,2022
+# vcom -reportprogress 300 -93 -work work C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/src/FrameBufferFIFO.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity FrameBufferFIFO
+# -- Compiling architecture SYN of framebufferfifo
+# End time: 15:48:11 on Jul 18,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vcom -93 -work work {C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/holo_tb.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:48:11 on Jul 18,2022
+# vcom -reportprogress 300 -93 -work work C:/Users/Sri/Desktop/AcoustophoreticBoard_fpga_3.4.2/holo_tb.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package util
+# -- Compiling entity holo_tb
+# -- Compiling architecture rtl of holo_tb
+# End time: 15:48:11 on Jul 18,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cycloneive -L rtl_work -L work -voptargs="+acc"  holo_tb
+# vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cycloneive -L rtl_work -L work -voptargs=""+acc"" holo_tb 
+# Start time: 15:48:11 on Jul 18,2022
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading modelsim_lib.util(body)
+# Loading work.holo_tb(rtl)
+# Loading work.masterclock(syn)
+# Loading altera_mf.altera_device_families(body)
+# Loading altera_mf.mf_pllpack(body)
+# Loading altera_mf.altpll(behavior)
+# Loading altera_mf.mf_cycloneiii_pll(vital_pll)
+# Loading altera_mf.mf_cda_mn_cntr(behave)
+# Loading altera_mf.mf_cda_scale_cntr(behave)
+# Loading work.counter(behavioral)
+# Loading work.rssfilter(behavioral)
+# Loading work.framebuffercontroller(behavioral)
+# Loading work.framebufferfifo(syn)
+# Loading altera_mf.scfifo(behavior)
+# ** Warning: Design size of 13514 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
+# Expect performance to be adversely affected.
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run 1 ms
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /holo_tb/inst_FrameBufferController
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /holo_tb/inst_FrameBufferController
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /holo_tb/inst_FrameBufferController
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /holo_tb/inst_FrameBufferController
+# ** Note: Cyclone IV E PLL locked to incoming clock
+#    Time: 90 ns  Iteration: 3  Instance: /holo_tb/inst_Masterclock/altpll_component/CYCLONEIII_ALTPLL/M5
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/NUM_TRANSDUCERS
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/clk
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/new_rx
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/rx_data
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/timing
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/divider
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/ready
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/byte_in
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/q_in
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/debugled
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/ReadState
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/byte_in_s
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/ready_s
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/debugled_s
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/data
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/rdreq
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/sclr
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/wrreq
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/empty
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/full
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/q
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/usedw
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/q_init
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/bytecnt
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/seccnt
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/divcnt
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/oldtiming
+add wave -position end  sim:/holo_tb/inst_FrameBufferController/sclrcnt
+restart
+run
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /holo_tb/inst_FrameBufferController
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /holo_tb/inst_FrameBufferController
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /holo_tb/inst_FrameBufferController
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /holo_tb/inst_FrameBufferController
+# ** Note: Cyclone IV E PLL locked to incoming clock
+#    Time: 90 ns  Iteration: 3  Instance: /holo_tb/inst_Masterclock/altpll_component/CYCLONEIII_ALTPLL/M5
+run
+run
+run
+run
+run
+run
+run
+run
+# End time: 15:58:08 on Jul 18,2022, Elapsed time: 0:09:57
+# Errors: 0, Warnings: 9

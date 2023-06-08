@@ -1,0 +1,48 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vlog -vlog01compat -work work +incdir+D:/Ryuji/Dropbox/PAT-Interact/1.board\ FPGA\ software/AcoustophoreticBoard_fpga/db {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/db/masterclock_altpll.v}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/PowerXYZ.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/PointDataController.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/PhaseLUTController.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/RSSFilter.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/top.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/MuxPhase.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/Distribute.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/Counter.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/AllChannels.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/Masterclock.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/PhaseRAM.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/AmplitudeRAM.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/PointHoloController.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/CalcDistance.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/Calibration.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/CalibrationRAM.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/AddressConverter.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/PhaseLUT.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/CommandReader.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/PointDataFIFO.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/AmplitudeCorrection.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/AmplitudeCorrectionLUT.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/PhaseShiftCorrection.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/output_files/SwapFIFO.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/GammaCorrection.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/GammaCorrectionLUT.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/PulseWidthModulator.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/ParallelReceiver.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/CalibrationAndMapping.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/PhaseCalibration.vhd}
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/src/PinMapping.vhd}
+
+vcom -93 -work work {D:/Ryuji/Dropbox/PAT-Interact/1.board FPGA software/AcoustophoreticBoard_fpga/holo_tb.vhd}
+
+vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cycloneive -L rtl_work -L work -voptargs="+acc"  holo_tb
+
+add wave *
+view structure
+view signals
+run 1 ms

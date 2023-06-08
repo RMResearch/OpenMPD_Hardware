@@ -1,0 +1,24 @@
+-----------------------------------------------------------------------------------
+--     This block converts the input signal into the actual data                 --
+-----------------------------------------------------------------------------------
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity FrameBufferController is
+	port (
+		clk	 	: in  std_logic
+	);
+end FrameBufferController;
+
+architecture Behavioral of FrameBufferController is
+	
+
+
+begin
+
+
+		
+end Behavioral;

@@ -1,0 +1,23 @@
+
+State Machine - |top|Distribute:inst_Distribute|GammaCorrection:inst_GammaCorrection|state
+Name state.Output state.Blue state.Green state.Red state.Idle 
+state.Idle 0 0 0 0 0 
+state.Red 0 0 0 1 1 
+state.Green 0 0 1 0 1 
+state.Blue 0 1 0 0 1 
+state.Output 1 0 0 0 1 
+
+State Machine - |top|Distribute:inst_Distribute|CommandReader:inst_CommandReader|GSPATstate
+Name GSPATstate.GSPATDataSwap GSPATstate.GSPATReadAmplitudes GSPATstate.GSPATReadPhases GSPATstate.GSPATIdle 
+GSPATstate.GSPATIdle 0 0 0 0 
+GSPATstate.GSPATReadPhases 0 0 1 1 
+GSPATstate.GSPATReadAmplitudes 0 1 0 1 
+GSPATstate.GSPATDataSwap 1 0 0 1 
+
+State Machine - |top|Distribute:inst_Distribute|FrameBufferController:inst_FrameBufferController|ReadState
+Name ReadState.WaitFrame ReadState.ReadFIFO ReadState.Idle ReadState.Init ReadState.Start 
+ReadState.Start 0 0 0 0 0 
+ReadState.Init 0 0 0 1 1 
+ReadState.Idle 0 0 1 0 1 
+ReadState.ReadFIFO 0 1 0 0 1 
+ReadState.WaitFrame 1 0 0 0 1 

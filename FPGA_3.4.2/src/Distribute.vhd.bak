@@ -1,0 +1,248 @@
+-----------------------------------------------------------------------------------
+--     This block converts the input signal into the actual data                 --
+-----------------------------------------------------------------------------------
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity Distribute is
+	generic (
+		NUM_TRANSDUCERS : integer := 256
+	);
+	port (
+		clk	 	 : in  std_logic;
+		byte_in   : in  std_logic;
+		q_in		 : in  std_logic_vector (7 downto 0);
+		ack		 : in  std_logic;
+		synccnt   : in  std_logic_vector (7 downto 0);
+		ready		 : out std_logic;
+		t_en		 : out std_logic;
+		t_flag	 : out std_logic;
+		t_data	 : out std_logic_vector (6 downto 0);
+		t_address : out std_logic_vector (7 downto 0);
+		t_pswap	 : out std_logic;
+		t_aswap	 : out std_logic;
+		rgb_data	 : out std_logic_vector (26 downto 0);
+		rgb_en	 : out std_logic;
+		start		 : out std_logic;
+		xout		 : out std_logic_vector (12 downto 0); 
+		yout		 : out std_logic_vector (12 downto 0); 
+		zout		 : out std_logic_vector (12 downto 0);
+		ampout	 : out std_logic_vector (7 downto 0);
+		phaout	 : out std_logic_vector (6 downto 0);
+		rgbout	 : out std_logic_vector (23 downto 0);
+		cen		 : out std_logic;
+		calib		 : out std_logic_vector (6 downto 0);
+		caddress  : out std_logic_vector (7 downto 0);
+		debugled  : out std_logic_vector (3 downto 0)		
+	 );
+end Distribute;
+
+architecture Behavioral of Distribute is
+	
+
+	component CommandReader is
+		generic (
+			NUM_TRANSDUCERS : integer := 256 );
+		port (
+			clk		 : in  std_logic;
+			byte_in	 : in  std_logic;
+			q_in		 : in  std_logic_vector (7 downto 0);
+			almost	 : in  std_logic;
+			ready		 : out std_logic;
+			t_en		 : out std_logic;
+			t_flag	 : out std_logic;
+			t_data	 : out std_logic_vector (6 downto 0);
+			t_address : out std_logic_vector (7 downto 0);
+			t_pswap	 : out std_logic;
+			t_aswap	 : out std_logic;
+			rgb_data	 : out std_logic_vector (23 downto 0);
+			rgb_en	 : out std_logic;
+			pen		 : out std_logic;
+			xin		 : out std_logic_vector (12 downto 0); 
+			yin		 : out std_logic_vector (12 downto 0); 
+			zin		 : out std_logic_vector (12 downto 0);
+			ampin		 : out std_logic_vector (7 downto 0);
+			phain		 : out std_logic_vector (6 downto 0);
+			rgbin		 : out std_logic_vector (23 downto 0);
+			nframes	 : out std_logic_vector (7 downto 0);
+			swap		 : out std_logic;
+			fiforst	 : out std_logic;
+			cen	 	 : out std_logic;
+			calib	 	 : out std_logic_vector (6 downto 0);
+			caddress  : out std_logic_vector (7 downto 0);
+			debugled  : out std_logic_vector (3 downto 0)		
+	);
+	end component;
+	
+	
+	component PointDataController is
+		port (
+			clk	   : in  std_logic;
+			pen	   : in  std_logic;
+			xin	   : in  std_logic_vector (12 downto 0); 
+			yin	   : in  std_logic_vector (12 downto 0); 
+			zin	   : in  std_logic_vector (12 downto 0);
+			ampin	   : in  std_logic_vector (7 downto 0);
+			phain	   : in  std_logic_vector (6 downto 0);
+			rgbin	   : in  std_logic_vector (23 downto 0);
+			nframes  : in  std_logic_vector (7 downto 0);
+			swap	   : in  std_logic;
+			fiforst	: in  std_logic;
+			ack	   : in  std_logic;
+			synccnt  : in  std_logic_vector (7 downto 0);
+			almost   : out std_logic;
+			start	   : out std_logic;
+			xout	   : out std_logic_vector (12 downto 0); 
+			yout	   : out std_logic_vector (12 downto 0); 
+			zout	   : out std_logic_vector (12 downto 0);
+			ampout   : out std_logic_vector (7 downto 0);
+			phaout   : out std_logic_vector (6 downto 0);
+			rgbout   : out std_logic_vector (23 downto 0);
+			debugled : out std_logic_vector (3 downto 0) );
+	end component;
+	
+	component GammaCorrection is
+		port (
+			clk		  : in  std_logic;
+			start		  : in  std_logic;
+			gammain	  : in  std_logic_vector (23 downto 0);
+			gammastart : out std_logic;
+			gammaout	  : out std_logic_vector (26 downto 0) );
+	end component;
+	
+	signal t_en_s		  : std_logic := '0';
+	signal t_flag_s	  : std_logic := '0';
+	signal t_data_s	  : std_logic_vector (6 downto 0) := (others => '0');
+	signal t_address_s  : std_logic_vector (7 downto 0) := (others => '0');
+	signal t_pswap_s	  : std_logic := '0';
+	signal t_aswap_s	  : std_logic := '0';
+
+	signal rgb_data_s   : std_logic_vector (26 downto 0) := (others => '0');
+	signal rgb_en_s	  : std_logic := '0';
+
+	signal ready_s		  : std_logic := '0';
+	signal start_s		  : std_logic := '0';
+	signal xout_s		  : std_logic_vector(12 downto 0) := (others => '0');
+	signal yout_s		  : std_logic_vector(12 downto 0) := (others => '0');
+	signal zout_s		  : std_logic_vector(12 downto 0) := (others => '0');
+	signal ampout_s	  : std_logic_vector(7 downto 0) := (others => '0');
+	signal phaout_s	  : std_logic_vector(6 downto 0) := (others => '0');
+	signal rgbout_s	  : std_logic_vector(23 downto 0) := (others => '0');
+
+	signal gamma_in	  : std_logic_vector (23 downto 0) := (others => '0');
+	signal gamma_en	  : std_logic := '0';
+
+	signal almost			  : std_logic := '0';
+	signal pen			  : std_logic := '0';
+	signal xin			  : std_logic_vector(12 downto 0) := (others => '0');
+	signal yin			  : std_logic_vector(12 downto 0) := (others => '0');
+	signal zin			  : std_logic_vector(12 downto 0) := (others => '0');
+	signal ampin		  : std_logic_vector(7 downto 0) := (others => '0');
+	signal phain		  : std_logic_vector(6 downto 0) := (others => '0');
+	signal rgbin		  : std_logic_vector(23 downto 0) := (others => '0');
+	signal swap			  : std_logic := '0';
+	signal fiforst		  : std_logic := '0';
+	signal nframes		  : std_logic_vector(7 downto 0) := (others => '0');
+	signal cen_s		  : std_logic := '0';
+	signal calib_s		  : std_logic_vector(6 downto 0) := (others => '0');
+	signal caddress_s   : std_logic_vector(7 downto 0) := (others => '0');
+	
+	signal debugled_cr   : std_logic_vector(3 downto 0) := (others => '0');
+	signal debugled_pdc  : std_logic_vector(3 downto 0) := (others => '0');
+		
+begin
+
+	t_en 		 <= t_en_s;
+	t_flag 	 <= t_flag_s;
+	t_data 	 <= t_data_s;
+	t_address <= t_address_s;
+	t_pswap 	 <= t_pswap_s;
+	t_aswap 	 <= t_aswap_s;
+
+	rgb_data  <= rgb_data_s;
+	rgb_en    <= rgb_en_s;
+
+	ready		 <= ready_s;
+	start  	 <= start_s;
+	xout	 	 <= xout_s;
+	yout	 	 <= yout_s;
+	zout	 	 <= zout_s;
+	ampout 	 <= ampout_s;	
+	phaout 	 <= phaout_s;	
+	rgbout 	 <= rgbout_s;
+	
+	cen 		 <= cen_s;
+	calib 	 <= calib_s;
+	caddress  <= caddress_s;
+	
+	debugled <= debugled_cr;
+	
+	inst_CommandReader : CommandReader 
+	   generic map (
+			NUM_TRANSDUCERS => NUM_TRANSDUCERS )
+		port map (
+			clk		 => clk,
+			byte_in	 => byte_in,
+			q_in		 => q_in,
+			almost	 => almost,
+			ready		 => ready_S,
+			t_en		 => t_en_S,
+			t_flag	 => t_flag_S,
+			t_data	 => t_data_S,
+			t_address => t_address_S,
+			t_pswap	 => t_pswap_S,
+			t_aswap	 => t_aswap_S,
+			rgb_data	 => gamma_in,
+			rgb_en	 => gamma_en,
+			pen		 => pen,
+			xin		 => xin,
+			yin		 => yin,
+			zin		 => zin,
+			ampin		 => ampin,
+			phain		 => phain,
+			rgbin		 => rgbin,
+			nframes	 => nframes,
+			swap		 => swap,
+			fiforst	 => fiforst,
+			cen	 	 => cen_s,
+			calib 	 => calib_s,
+			caddress  => caddress_s,
+			debugled	 => debugled_cr );
+
+
+	inst_PointDataController : PointDataController 
+		port map (
+			clk	  => clk,
+			pen	  => pen,
+			xin	  => xin,
+			yin	  => yin,
+			zin	  => zin,
+			ampin	  => ampin,
+			phain	  => phain,
+			rgbin	  => rgbin,
+			nframes => nframes,
+			swap	  => swap,
+			fiforst => fiforst,
+			ack	  => ack,
+			synccnt => synccnt,
+			almost  => almost,
+			start	  => start_s,
+			xout	  => xout_s,
+			yout	  => yout_s,
+			zout	  => zout_s,
+			ampout  => ampout_s,
+			phaout  => phaout_s,
+			rgbout  => rgbout_s,
+			debugled => debugled_pdc );
+
+	inst_GammaCorrection : GammaCorrection
+		port map (
+			clk	  	  => clk,
+			start		  => gamma_en,
+			gammain	  => gamma_in,
+			gammastart => rgb_en_s,
+			gammaout	  => rgb_data_s );
+			
+end Behavioral;

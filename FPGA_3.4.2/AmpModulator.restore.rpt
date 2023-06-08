@@ -1,0 +1,180 @@
+Restore Archived Project report for AmpModulator
+Sat Feb 08 17:56:38 2020
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Restore Archived Project Summary
+  3. Restore Archived Project Messages
+  4. Files Restored
+  5. Files Not Restored
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------+
+; Restore Archived Project Summary                                        ;
++---------------------------------+---------------------------------------+
+; Restore Archived Project Status ; Successful - Sat Feb 08 17:56:38 2020 ;
+; Revision Name                   ; AmpModulator                          ;
+; Top-level Entity Name           ; top                                   ;
+; Family                          ; Cyclone IV E                          ;
++---------------------------------+---------------------------------------+
+
+
++-----------------------------------+
+; Restore Archived Project Messages ;
++-----------------------------------+
+Info: Successfully restored 'C:/Users/3800r/Dropbox/05 Lab Work/Software/MATD-OpenGL_fpga(NewPCBImprovedInterporation)/AmpModulator_tmp_archive.qar' into the 'C:/Users/3800r/Dropbox/05 Lab Work/Software/AcoustophoreticBoard_fpga' directory
+Info: Generated report 'AmpModulator.restore.rpt'
+
+
++--------------------------------------+
+; Files Restored                       ;
++--------------------------------------+
+; File Name                            ;
++--------------------------------------+
+; qar_info.json                        ;
+; AddressConverter.vhd                 ;
+; AmpModulator.qpf                     ;
+; AmpModulator.qsf                     ;
+; AmpModulator_assignment_defaults.qdf ;
+; ArctanLUTController.vhd              ;
+; amplitudelut.mif                     ;
+; amplituderam.mif                     ;
+; gammalut.mif                         ;
+; holo_tb.vhd                          ;
+; output_files/SwapFIFO.cmp            ;
+; output_files/SwapFIFO.inc            ;
+; output_files/SwapFIFO.qip            ;
+; output_files/SwapFIFO.vhd            ;
+; output_files/SwapFIFO_inst.vhd       ;
+; output_tb.vhd                        ;
+; phaselut.mif                         ;
+; src/AllChannels.vhd                  ;
+; src/AmplitudeCorrection.vhd          ;
+; src/AmplitudeCorrectionLUT.cmp       ;
+; src/AmplitudeCorrectionLUT.inc       ;
+; src/AmplitudeCorrectionLUT.qip       ;
+; src/AmplitudeCorrectionLUT.vhd       ;
+; src/AmplitudeCorrectionLUT_inst.vhd  ;
+; src/AmplitudeRAM.cmp                 ;
+; src/AmplitudeRAM.hex                 ;
+; src/AmplitudeRAM.qip                 ;
+; src/AmplitudeRAM.vhd                 ;
+; src/ArctanLUT.cmp                    ;
+; src/ArctanLUT.inc                    ;
+; src/ArctanLUT.qip                    ;
+; src/ArctanLUT.vhd                    ;
+; src/ArctanLUT_inst.vhd               ;
+; src/CalcDistance.vhd                 ;
+; src/Calibration.vhd                  ;
+; src/CalibrationAndMapping.vhd        ;
+; src/CalibrationRAM.cmp               ;
+; src/CalibrationRAM.inc               ;
+; src/CalibrationRAM.qip               ;
+; src/CalibrationRAM.vhd               ;
+; src/CalibrationRAM_inst.vhd          ;
+; src/CommandReader.vhd                ;
+; src/Counter.vhd                      ;
+; src/Distribute.vhd                   ;
+; src/GammaCorrection.vhd              ;
+; src/GammaCorrectionLUT.cmp           ;
+; src/GammaCorrectionLUT.inc           ;
+; src/GammaCorrectionLUT.qip           ;
+; src/GammaCorrectionLUT.vhd           ;
+; src/GammaCorrectionLUT_inst.vhd      ;
+; src/HoloLUT.hex                      ;
+; src/HoloLUT.mif                      ;
+; src/InputRAM.cmp                     ;
+; src/InputRAM.qip                     ;
+; src/InputRAM.vhd                     ;
+; src/InputSelector.vhd                ;
+; src/Interpolation.vhd                ;
+; src/InterpolationControl.vhd         ;
+; src/InterpolationRAM.cmp             ;
+; src/InterpolationRAM.qip             ;
+; src/InterpolationRAM.vhd             ;
+; src/LUT_21.cmp                       ;
+; src/LUT_21.inc                       ;
+; src/LUT_21.qip                       ;
+; src/LUT_21.vhd                       ;
+; src/LUT_21_inst.vhd                  ;
+; src/Masterclock.cmp                  ;
+; src/Masterclock.inc                  ;
+; src/Masterclock.ppf                  ;
+; src/Masterclock.qip                  ;
+; src/Masterclock.vhd                  ;
+; src/Masterclock_inst.vhd             ;
+; src/MuxPhase.vhd                     ;
+; src/ParallelReceiver.vhd             ;
+; src/PhaseCalibration.vhd             ;
+; src/PhaseLUT.cmp                     ;
+; src/PhaseLUT.inc                     ;
+; src/PhaseLUT.qip                     ;
+; src/PhaseLUT.vhd                     ;
+; src/PhaseLUTController.vhd           ;
+; src/PhaseLUT_inst.vhd                ;
+; src/PhaseRAM.cmp                     ;
+; src/PhaseRAM.inc                     ;
+; src/PhaseRAM.qip                     ;
+; src/PhaseRAM.vhd                     ;
+; src/PhaseRAM_inst.vhd                ;
+; src/PhaseShiftCorrection.vhd         ;
+; src/PinMapping.vhd                   ;
+; src/PointDataController.vhd          ;
+; src/PointDataFIFO.cmp                ;
+; src/PointDataFIFO.inc                ;
+; src/PointDataFIFO.qip                ;
+; src/PointDataFIFO.vhd                ;
+; src/PointDataFIFO_inst.vhd           ;
+; src/PointDataRAM.cmp                 ;
+; src/PointDataRAM.qip                 ;
+; src/PointDataRAM.vhd                 ;
+; src/PointHolo.vhd                    ;
+; src/PointHoloController.vhd          ;
+; src/PowerXYZ.vhd                     ;
+; src/PulseWidthModulator.vhd          ;
+; src/RSSFilter.vhd                    ;
+; src/RealImagRAMs.vhd                 ;
+; src/RealImagSummation.vhd            ;
+; src/SerialReceiver.vhd               ;
+; src/SinCosLUTController.vhd          ;
+; src/SummationRAM.cmp                 ;
+; src/SummationRAM.inc                 ;
+; src/SummationRAM.qip                 ;
+; src/SummationRAM.vhd                 ;
+; src/SummationRAM_inst.vhd            ;
+; src/top.vhd                          ;
+; top.sdc                              ;
++--------------------------------------+
+
+
++--------------------+
+; Files Not Restored ;
++--------------------+
+; File Name          ;
++--------------------+
+
+

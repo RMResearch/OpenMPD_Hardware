@@ -1,0 +1,237 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "SYNC_REF",
+					"strict" : false
+				},
+				{
+					"name" : "RD_N",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[0]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[1]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[2]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[3]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[4]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[5]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[6]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[7]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[8]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[9]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[10]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[11]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[12]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[13]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[14]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[15]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[16]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[17]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[18]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[19]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[20]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[21]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[22]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[23]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[24]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[25]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[26]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[27]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[28]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[29]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[30]",
+					"strict" : false
+				},
+				{
+					"name" : "DATA[31]",
+					"strict" : false
+				},
+				{
+					"name" : "ILLUMI[0]",
+					"strict" : false
+				},
+				{
+					"name" : "ILLUMI[1]",
+					"strict" : false
+				},
+				{
+					"name" : "ILLUMI[2]",
+					"strict" : false
+				},
+				{
+					"name" : "RCLK[0]",
+					"strict" : false
+				},
+				{
+					"name" : "RCLK[1]",
+					"strict" : false
+				},
+				{
+					"name" : "RCLK[2]",
+					"strict" : false
+				},
+				{
+					"name" : "RCLK[3]",
+					"strict" : false
+				},
+				{
+					"name" : "LED[0]",
+					"strict" : false
+				},
+				{
+					"name" : "LED[1]",
+					"strict" : false
+				},
+				{
+					"name" : "LED[2]",
+					"strict" : false
+				},
+				{
+					"name" : "LED[3]",
+					"strict" : false
+				},
+				{
+					"name" : "SYNC_MAIN",
+					"strict" : false
+				},
+				{
+					"name" : "USB_DATA[0]",
+					"strict" : false
+				},
+				{
+					"name" : "USB_DATA[1]",
+					"strict" : false
+				},
+				{
+					"name" : "USB_DATA[2]",
+					"strict" : false
+				},
+				{
+					"name" : "USB_DATA[3]",
+					"strict" : false
+				},
+				{
+					"name" : "USB_DATA[4]",
+					"strict" : false
+				},
+				{
+					"name" : "USB_DATA[5]",
+					"strict" : false
+				},
+				{
+					"name" : "USB_DATA[6]",
+					"strict" : false
+				},
+				{
+					"name" : "USB_DATA[7]",
+					"strict" : false
+				},
+				{
+					"name" : "CLK",
+					"strict" : false
+				},
+				{
+					"name" : "RXF_N",
+					"strict" : false
+				},
+				{
+					"name" : "MS_SELECT",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
