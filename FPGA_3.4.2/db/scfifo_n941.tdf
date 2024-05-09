@@ -1,10 +1,10 @@
 --scfifo ADD_RAM_OUTPUT_REGISTER="OFF" DEVICE_FAMILY="Cyclone IV E" LPM_NUMWORDS=16384 LPM_SHOWAHEAD="OFF" LPM_WIDTH=8 LPM_WIDTHU=14 OPTIMIZE_FOR_SPEED=5 OVERFLOW_CHECKING="ON" UNDERFLOW_CHECKING="ON" USE_EAB="ON" clock data empty full q rdreq sclr usedw wrreq CARRY_CHAIN="MANUAL" CARRY_CHAIN_LENGTH=48 CYCLONEII_M4K_COMPATIBILITY="ON" INTENDED_DEVICE_FAMILY="Cyclone IV E" LOW_POWER_MODE="AUTO"
---VERSION_BEGIN 18.1 cbx_altdpram 2018:09:12:13:04:24:SJ cbx_altera_counter 2018:09:12:13:04:24:SJ cbx_altera_syncram 2018:09:12:13:04:24:SJ cbx_altera_syncram_nd_impl 2018:09:12:13:04:24:SJ cbx_altsyncram 2018:09:12:13:04:24:SJ cbx_cycloneii 2018:09:12:13:04:24:SJ cbx_fifo_common 2018:09:12:13:04:24:SJ cbx_lpm_add_sub 2018:09:12:13:04:24:SJ cbx_lpm_compare 2018:09:12:13:04:24:SJ cbx_lpm_counter 2018:09:12:13:04:24:SJ cbx_lpm_decode 2018:09:12:13:04:24:SJ cbx_lpm_mux 2018:09:12:13:04:24:SJ cbx_mgl 2018:09:12:13:10:36:SJ cbx_nadder 2018:09:12:13:04:24:SJ cbx_scfifo 2018:09:12:13:04:24:SJ cbx_stratix 2018:09:12:13:04:24:SJ cbx_stratixii 2018:09:12:13:04:24:SJ cbx_stratixiii 2018:09:12:13:04:24:SJ cbx_stratixv 2018:09:12:13:04:24:SJ cbx_util_mgl 2018:09:12:13:04:24:SJ  VERSION_END
+--VERSION_BEGIN 20.1 cbx_altdpram 2020:11:11:17:06:45:SJ cbx_altera_counter 2020:11:11:17:06:45:SJ cbx_altera_syncram 2020:11:11:17:06:45:SJ cbx_altera_syncram_nd_impl 2020:11:11:17:06:45:SJ cbx_altsyncram 2020:11:11:17:06:45:SJ cbx_cycloneii 2020:11:11:17:06:45:SJ cbx_fifo_common 2020:11:11:17:06:45:SJ cbx_lpm_add_sub 2020:11:11:17:06:45:SJ cbx_lpm_compare 2020:11:11:17:06:45:SJ cbx_lpm_counter 2020:11:11:17:06:45:SJ cbx_lpm_decode 2020:11:11:17:06:45:SJ cbx_lpm_mux 2020:11:11:17:06:45:SJ cbx_mgl 2020:11:11:17:08:38:SJ cbx_nadder 2020:11:11:17:06:46:SJ cbx_scfifo 2020:11:11:17:06:46:SJ cbx_stratix 2020:11:11:17:06:46:SJ cbx_stratixii 2020:11:11:17:06:46:SJ cbx_stratixiii 2020:11:11:17:06:46:SJ cbx_stratixv 2020:11:11:17:06:46:SJ cbx_util_mgl 2020:11:11:17:06:46:SJ  VERSION_END
 
 
--- Copyright (C) 2018  Intel Corporation. All rights reserved.
+-- Copyright (C) 2020  Intel Corporation. All rights reserved.
 --  Your use of Intel Corporation's design tools, logic functions 
---  and other software and tools, and its AMPP partner logic 
+--  and other software and tools, and any partner logic 
 --  functions, and any output files from any of the foregoing 
 --  (including device programming or simulation files), and any 
 --  associated documentation or information are expressly subject 
@@ -14,13 +14,14 @@
 --  agreement, including, without limitation, that your use is for
 --  the sole purpose of programming logic devices manufactured by
 --  Intel and sold by Intel or its authorized distributors.  Please
---  refer to the applicable agreement for further details.
+--  refer to the applicable agreement for further details, at
+--  https://fpgasoftware.intel.com/eula.
 
 
 FUNCTION a_dpfifo_a141 (clock, data[7..0], rreq, sclr, wreq)
 RETURNS ( empty, full, q[7..0], usedw[13..0]);
 
---synthesis_resources = 
+--synthesis_resources = lut 52 M9K 16 reg 45 
 SUBDESIGN scfifo_n941
 ( 
 	clock	:	input;
